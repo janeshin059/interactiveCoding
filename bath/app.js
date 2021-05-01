@@ -1,3 +1,4 @@
+import { Toy } from "./toy.js";
 import { WaveGroup } from "./wavegroup.js";
 
 class App {
@@ -6,28 +7,32 @@ class App {
     this.ctx = this.canvas.getContext('2d');
     document.body.appendChild(this.canvas);
 
+    this.img = new Image();
+    this.img.src = './duck.png'
+    this.toy = new Toy(this.img);
+
     this.waveGroup = new WaveGroup();
     window.addEventListener('resize', this.resize.bind(this), false);
     this.resize();
-
-    requestAnimationFrame(this.animate.bind(this)); //start animation
+    requestAnimationFrame(this.animate.bind(this));
   }
 
-  resize() {
+  resize(){
     this.stageWidth = document.body.clientWidth;
     this.stageHeight = document.body.clientHeight;
-
-    this.canvas.width = this.stageWidth * 2; //to maintain good quality in retina
+    
+    this.canvas.width = this.stageWidth * 2;
     this.canvas.height = this.stageHeight * 2;
     this.ctx.scale(2,2);
 
     this.waveGroup.resize(this.stageWidth, this.stageHeight);
   }
 
-  animate(t) {
-    this.ctx.clearRect(0,0, this.stageWidth, this.stageHeight); //clear canvas
+  animate(){
+    this.ctx.clearRect(0,0, this.stageWidth, this.stageHeight);
+    this.toy.draw(this.ctx);
     this.waveGroup.draw(this.ctx);
-    requestAnimationFrame(this.animate.bind(this)); 
+    requestAnimationFrame(this.animate.bind(this));
   }
 }
 
