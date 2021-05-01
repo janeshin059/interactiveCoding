@@ -1,5 +1,4 @@
 import { Hill } from "./hill.js";
-
 import {SheepController} from "./sheep-controller.js"
 import { Sun } from "./sun.js";
 class App {
@@ -24,8 +23,8 @@ class App {
     this.stageWidth = document.body.clientWidth;
     this.stageHeight = document.body.clientHeight;
 
-    this.canvas.width = this.stageWidth * 2;
-    this.canvas.height = this.stageHeight * 2;
+    this.canvas.width = this.stageWidth * 2; //for retina display
+    this.canvas.height = this.stageHeight * 2; 
     this.ctx.scale(2,2);
 
     this.sun.resize(this.stageWidth, this.stageHeight);
@@ -43,7 +42,7 @@ class App {
     this.ctx.clearRect(0,0, this.stageWidth, this.stageHeight);
     this.sun.draw(this.ctx, t);
     let dots;
-    for(let i = 0; i<this.hills.length; i++){
+    for(let i = 0; i<this.hills.length; i++){ //언덕의 마지막 좌표에 양을 그릴 것
       dots = this.hills[i].draw(this.ctx);
     }
     this.SheepController.draw(this.ctx,t,dots);

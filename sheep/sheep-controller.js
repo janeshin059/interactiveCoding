@@ -22,8 +22,8 @@ export class SheepController {
   loaded() {
     this.isLoaded = true;
     this.addSheep();
-
   }
+
   addSheep(){
     this.items.push(
       new Sheep(this.img, this.stageWidth),
@@ -33,7 +33,7 @@ export class SheepController {
   draw(ctx,t,dots){
     if(this.isLoaded) {
       this.cur += 1;
-      if(this.cur >200) {
+      if(this.cur > 200) {
         this.cur = 0;
         this.addSheep();
       }

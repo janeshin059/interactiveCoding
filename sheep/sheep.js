@@ -41,7 +41,7 @@ export class Sheep {
     this.animate(ctx,dots);
   }
   animate(ctx, dots){
-    this.x -= this.speed;
+    this.x -= this.speed;//왼쪽으로 양이 계속 이동
     const closest = this.getY(this.x, dots);
     this.y = closest.y;
 
@@ -56,7 +56,7 @@ export class Sheep {
       this.imgWidth,
       this.imgHeight,
       -this.sheepWidthHalf,
-      -this.sheepHeight + 20,
+      -this.sheepHeight + 40,
       this.sheepWidth,
       this.sheepHeight
     );

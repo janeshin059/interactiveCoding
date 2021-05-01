@@ -29,8 +29,8 @@ export class Hill {
      let dots = [];
      cur.x += this.speed;
 
-     if(cur.x > -this.gap){
-       this.points.unshift({
+     if(cur.x > -this.gap){//x 좌표의 시작점이 화면 밖으로 나오기 전에
+       this.points.unshift({//새로운 언덕을 추가
          x: -(this.gap *2),
          y: this.getY()
        });
